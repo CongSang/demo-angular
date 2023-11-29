@@ -1,0 +1,18 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+	&.container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.6rem 1rem;
+		font-weight: bold;
+		background-color: #0d6efd;
+		color: #fff;
+		font-size: 1.25rem;
+        box-shadow: 0 1px 2px rgba(57, 63, 72, 0.5);
+	}
+}

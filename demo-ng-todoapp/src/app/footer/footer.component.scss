@@ -1,0 +1,13 @@
+footer {
+    width: 100%;
+
+    &.container {
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+		padding: 0.6rem 1rem;
+        color: #303030;
+        background-color: #cfe2ff;
+        box-shadow: 0 1px 2px rgba(57, 63, 72, 0.5);
+    }
+}
