@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect bg-secondary-theme">
+        <div class="card-body text-center">
+          <h5 class="text-theme"> All Blog Posts </h5>
+          <p class="text-theme"> From here you can manage all blog posts. </p>
+          
+          <button type="button" class="btn btn-info bg-theme" routerLink="/posts/new">Add New Post</button>
+          <button type="button" class="btn btn-warning ms-2" routerLink="/">Back to Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-3 my-md-4">
+    <div class="col-md-12">
+      <div class="card shadow-effect">
+        <div class="card-body" style="overflow-y: auto;">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th> No </th>
+                <th> Post Image </th>
+                <th> Title </th>
+                <th> Excerpt </th>
+                <th> Category </th>
+                <th> Date </th>
+                <th> Actions </th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr *ngFor="let item of postList; let i = index" routerLink="/posts/new" [queryParams]="{ id: item.id }">
+                <td width="10">{{ i + 1 }}</td>
+                <td style="min-width: 100px; max-width: 150px;"><img [src]="item.data.postImgUrl" class="img img-fluid"></td>
+                <td style="min-width: 150px; max-width: 150px;">{{ item.data.title }}</td>
+                <td style="min-width: 200px; max-width: 250px;">
+                  <div class="clamp-4">{{ item.data.excerpt }}</div>
+                </td>
+                <td style="min-width: 50px; min-width: 150px;">{{ item.data.category.categoryName }}</td>
+                <td style="min-width: 100px;">{{ item.data.createdAt?.toMillis() | date }}</td>
+                <td>
+                  <div class="d-flex flex-wrap" style="gap: 5px;">
+                    <button type="button" class="btn btn-sm btn-danger" (click)="onDelete($event, item.data.postImgUrl, item.id, modal)">Delete</button>
+
+                    <button 
+                      *ngIf="!item.data.isFeatured"
+                      class="btn btn-sm btn-success" 
+                      (click)="onFeatured($event, item, true)"
+                    >
+                      Make Featured
+                    </button>
+
+                    <button 
+                      *ngIf="item.data.isFeatured" 
+                      class="btn btn-sm btn-info" 
+                      (click)="onFeatured($event, item, false)"
+                    >
+                      Remove Featured
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modal>
+  <app-modal></app-modal>
+</ng-template>

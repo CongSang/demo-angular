@@ -1,0 +1,33 @@
+<div class="card mt-3 mt-md-4 shadow-effect">
+  <div class="card-body">
+    <h5>Leave a comment</h5>
+    <p class="sub-text">You can leave a comment using this comment form</p>
+
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <div class="mb-2">
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="name" 
+          placeholder="Enter your name here"
+          [ngClass]="{ 'is-invalid': onValidateField('name', 'required') }" 
+        >
+        <!-- <small class="text-danger" *ngIf="onValidateField('name', 'required')"> Name is required </small> -->
+      </div>
+
+      <div class="mb-2">
+        <textarea 
+          cols="30" 
+          rows="5" 
+          class="form-control" 
+          formControlName="comment" 
+          placeholder="Add your comment here"
+          [ngClass]="{ 'is-invalid': onValidateField('comment', 'required') }" 
+        ></textarea>
+        <!-- <small class="text-danger" *ngIf="onValidateField('comment', 'required')"> Comment is required </small> -->
+      </div>
+
+      <button class="btn btn-info btn-theme" [disabled]="commentForm.invalid">Add a comment</button>
+    </form>
+  </div>
+</div>

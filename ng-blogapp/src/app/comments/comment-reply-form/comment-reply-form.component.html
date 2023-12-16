@@ -1,0 +1,33 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+  <div class="mb-2">
+    <textarea 
+      cols="30" 
+      rows="3" 
+      class="form-control" 
+      formControlName="comment" 
+      placeholder="Add your comment here"
+      [ngClass]="{ 'is-invalid': onValidateField('comment', 'required') }" 
+    ></textarea>
+    <!-- <small class="text-danger" *ngIf="onValidateField('comment', 'required')"> Comment is required </small> -->
+  </div>
+
+  <div class="mb-2 d-flex">
+    <input 
+      type="text" 
+      class="form-control" 
+      formControlName="name" 
+      placeholder="Enter your name here"
+      [ngClass]="{ 'is-invalid': onValidateField('name', 'required') }" 
+    >
+    <!-- <small class="text-danger" *ngIf="onValidateField('name', 'required')"> Name is required </small> -->
+    
+    <button 
+      class="btn btn-info btn-theme ms-2" 
+      [disabled]="commentForm.invalid"
+    >
+      Reply
+    </button>
+  </div>
+
+
+</form>

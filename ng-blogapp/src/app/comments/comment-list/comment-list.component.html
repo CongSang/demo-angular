@@ -1,0 +1,60 @@
+<div class="card my-3 my-md-4 pb-4 shadow-effect">
+  <div class="card-body">
+    <h5 class="mb-2 mb-md-3 mt-1"> Comments ({{ totalComments }}) </h5>
+
+    <div *ngIf="commentList.length">
+      <div 
+        *ngFor="let item of commentList; let i = index" 
+        class="mt-2 mt-md-3 bg-light p-3 py-md-3 px-md-4 rounded-1"
+      >
+        <div class="d-flex align-items-center">
+          <h6 class="mb-0" style="font-size: 14px !important;"> {{ item.data.name }} </h6>
+          <div 
+            class="sub-text ms-2 fs-7 d-flex align-items-center" 
+            style="gap: 3px;"
+          >
+            {{ onReturnDate(item.data.createdAt) }} 
+            <i class="fa-regular fa-clock"></i>
+          </div>
+        </div>
+  
+        <div class="my-2">
+          {{ item.data.comment }}
+        </div>
+  
+        <div class="d-flex align-items-center justify-content-end">
+          <button class="btn btn-link d-flex text-decoration-none fs-7">
+            Reply
+          </button>
+  
+          <button class="btn btn-link d-flex align-items-center text-decoration-none fs-7">
+            View reply
+            <div class="spinner-border text-primary ms-2" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+        </div>
+  
+        <div class="mb-2 border-top"></div>
+
+        <app-comment-reply-form></app-comment-reply-form>
+      </div>
+    </div>
+
+    <div *ngIf="!commentList.length" class="sub-text text-center">Have no comments</div>
+
+    <div class="d-flex justify-content-center">
+      <button 
+        class="btn btn-light mt-3 d-flex align-items-center fs-7" 
+        *ngIf="isLoadMore" 
+        [disabled]="loading" 
+        (click)="onLoadMoreComments()"
+      >
+        Load more comments
+        <div *ngIf="loading" class="spinner-border text-secondary ms-2" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

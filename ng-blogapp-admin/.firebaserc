@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-blog-c46e1": {
+      "hosting": {
+        "ng-blogapp-admin": [
+          "angular-blog-c46e1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-blog-c46e1"
+  }
+}

@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import 'ngx-toastr/toastr';
+
+
+:root {
+  --primary-color: #026467;
+  --secondary-color: #e5f5ea;
+  --body-text-color: #596392;
+  --navbar-footer-color: #f9f9f9;
+}
+
+.toast-container {
+  pointer-events: none;
+  position: fixed !important;
+  z-index: 999999;
+}
+
+body {
+  font-size: 14px !important;
+  font-family: 'Roboto', sans-serif !important;
+  display: contents;
+}
+
+a {
+  text-decoration: none !important;
+
+  // &:hover {
+  //   text-decoration: underline !important;
+  // }
+}
+
+button {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  color: var(--primary-color) !important;
+}
+
+.logo {
+  background-color: var(--secondary-color);
+  color: var(--primary-color) !important;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.clamp-2,
+.clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.clamp-2 {
+  -webkit-line-clamp: 2;
+}
+
+.clamp-4 {
+  -webkit-line-clamp: 4;
+}
+
+.shadow-effect {
+  box-shadow: 0 0 20px -10px rgba(71, 114, 254, 0.3);
+
+  &.card {
+    border: none !important;
+  }
+}
+
+.bg-theme {
+  color: #fff !important;
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary-theme {
+  background-color: var(--secondary-color) !important;
+}
+
+.text-theme {
+  color: var(--primary-color)
+}
+
+input, select {
+  height: 40px !important;
+  padding-left: 20px;
+  width: 100%;
+
+  &.ng-touched.ng-invalid {
+    border-color: #f44336;
+  }
+}
+
+textarea {
+  &.ng-touched.ng-invalid {
+    border-color: #f44336;
+  }
+}
+
+small {
+  color: #f44336;
+}
+
+.btn-theme {
+  height: 38px;
+  border: none !important;
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}

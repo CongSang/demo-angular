@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row" *ngIf="postDetail">
+    <div class="col-lg-9">
+      <div class="card shadow-effect">
+        <img
+          *ngIf="imageError"
+          src="/assets/images/post-image-default.png" 
+          alt="" 
+          class="card-img-top object-fit-cover w-100" 
+          style="max-height: 450px"
+        />
+
+        <img
+          *ngIf="!imageError"
+          src="{{ postDetail.postImgUrl }}" 
+          alt="" 
+          class="card-img-top object-fit-cover w-100" 
+          style="max-height: 450px"
+          (error)="onErrorImage($event)"
+        />
+
+        <div class="card-body">
+          <small class="bg-light text-danger text-center">{{ postDetail.category.categoryName }}</small>
+          <small *ngIf="postDetail.isFeatured" class="bg-light text-success text-center ms-3">Featured</small>
+          <small class="bg-light text-primary text-center ms-3">View - {{ postDetail.views }}</small>
+          <small class="bg-light text-warning text-center ms-3">
+            Last updated - {{ onReturnDate(postDetail.createdAt) }}
+          </small>
+
+          <h1 class="my-3 clamp-2">{{ postDetail.title }}</h1>
+
+          <p [innerHTML]="postDetail.content"></p>
+        </div>
+      </div>
+
+      <app-comment-form (submitEvent)="onSubmit($event)" ></app-comment-form>
+
+      <app-comment-list [newComment]="newComment" ></app-comment-list>
+    </div>
+
+    <div class="col-lg-3">
+      <div *ngFor="let item of similarPosts" class="mb-3">
+        <app-post-card [postData]="item" class="d-flex justify-content-center h-100"></app-post-card>
+      </div>
+    </div>
+  </div>
+</div>
